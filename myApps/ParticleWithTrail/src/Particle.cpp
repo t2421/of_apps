@@ -28,7 +28,7 @@ void Particle::draw(){
         if(count >= numDrawTrail) break;
         float opacity = ofMap(count,0,numDrawTrail,maxAlpha,0);
         ofSetColor(r,g,b,opacity);
-        ofDrawLine(trail[i].x, trail[i].y, trail[i-1].x, trail[i-1].y);
+        ofDrawLine(trail[i]->x, trail[i]->y, trail[i-1]->x, trail[i-1]->y);
         count++;
     }
     
@@ -39,12 +39,12 @@ void Particle::update(){
     velocity *= friction;
     location += velocity;
     
-    trail.push_back(ofVec2f(location));
+    trail.push_back(new ofVec2f(location));
 }
 
 void Particle::updateAccel(ofVec2f& mouse){
-    
-    ofVec2f random = ofVec2f(ofRandom(0.5)-0.25,ofRandom(0.5)-0.25);
+	float randStrength = 2;
+    ofVec2f random = ofVec2f(ofRandom(randStrength)- randStrength/2.0,ofRandom(randStrength)- randStrength / 2.0);
     ofVec2f diff = mouse-location;
     float length = diff.length();
     float strength = std::min(length*0.07,0.7);

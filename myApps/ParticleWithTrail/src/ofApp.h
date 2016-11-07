@@ -21,8 +21,8 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-    int numParticles = 122;
-    vector<Particle> particles;
+    int numParticles = 1000;
+    vector<Particle*> particles;
     ofVec2f mouse;
     Particle particle;
 		

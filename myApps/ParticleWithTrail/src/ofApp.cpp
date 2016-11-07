@@ -2,13 +2,16 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	ofSetFrameRate(60);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     
     ofBackground(0,0,0);
     for (int i = 0; i<numParticles; i++) {
-        particles.push_back(Particle());
+		Particle* p = new Particle();
+        particles.push_back(p);
     }
+
     
 }
 
@@ -17,15 +20,15 @@ void ofApp::update(){
     
     
     for (int i = 0; i<numParticles; i++) {
-        particles[i].updateAccel(mouse);
-        particles[i].update();
+        particles[i]->updateAccel(mouse);
+        particles[i]->update();
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     for (int i = 0; i<numParticles; i++) {
-        particles[i].draw();
+        particles[i]->draw();
     }
 }
 

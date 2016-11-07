@@ -14,8 +14,8 @@ public:
     ofVec2f location;
     ofVec2f accel;
     float friction = 0.98;
-    vector<ofVec2f> trail;
-    int maxTrail = 80;
+    vector<ofVec2f*> trail;
+    int maxTrail = 20;
     Particle();
     void draw();
     void update();
